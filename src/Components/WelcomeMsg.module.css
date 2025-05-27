@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
+.welcome {
+  font-family: "Joti One", serif;
+  font-size: 50px;
+  font-weight: 600;
+  margin-top: 35px;
+  color: rgb(250, 63, 6);
+}
