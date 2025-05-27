@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MdAddToPhotos } from "react-icons/md";
 
 function AddTodo({ handleNewItem }) {
   const [todoName, setTodoName] = useState("");
@@ -21,7 +22,6 @@ function AddTodo({ handleNewItem }) {
     <div className="container text-center">
       <div className="row">
         <div className="col-6">
-<<<<<<< HEAD
           <input
             type="text"
             placeholder="Enter Todo here"
@@ -38,16 +38,7 @@ function AddTodo({ handleNewItem }) {
             className="btn btn-success"
             onClick={handleAddButtonClick}
           >
-=======
-          <input type="text" placeholder="Enter Todo here" />
-        </div>
-        <div className="col-4">
-          <input type="date" />
-        </div>
-        <div className="col-2">
-          <button type="button" className="btn btn-success">
->>>>>>> 9ffac0a672fdebaee513369b9d9b016b9e7748a1
-            Add
+            <MdAddToPhotos />
           </button>
         </div>
       </div>
