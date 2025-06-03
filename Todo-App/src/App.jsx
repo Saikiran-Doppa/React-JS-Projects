@@ -2,18 +2,27 @@ import "./App.css";
 import AppName from "./Components/AppName";
 import AddTodo from "./Components/AddTodo";
 import TodoItems from "./Components/TodoItems";
+import { useState } from "react";
+import WelcomeMsg from "./Components/WelcomeMsg";
 
 function App() {
-  let todoItems = [
-    { name: "Finish React-JS", dueDate: "10-May-2025" },
-    { name: "Revision", dueDate: "10-May-2025" },
-    { name: "Lunch", dueDate: "at 1:00pm" },
-  ];
+  const [todoItems, setTodoitems] = useState([]);
+
+  const onNewItem = (itemName, itemDate) => {
+    const newItem = [...todoItems, { name: itemName, dueDate: itemDate }];
+    setTodoitems(newItem);
+  };
+
+  const onDeleteItem = (todoItemName) => {
+    const remItem = todoItems.filter((item) => item.name !== todoItemName);
+    setTodoitems(remItem);
+  };
   return (
     <center>
       <AppName></AppName>
-      <AddTodo></AddTodo>
-      <TodoItems todoItems={todoItems}></TodoItems>
+      <AddTodo onNewItem={onNewItem}></AddTodo>
+      {todoItems.length === 0 && <WelcomeMsg></WelcomeMsg>}
+      <TodoItems todoItems={todoItems} onDeleteItem={onDeleteItem}></TodoItems>
     </center>
   );
 }

@@ -1,0 +1,8 @@
+.welcome {
+  font-size: 35px;
+  margin-top: 40px;
+  color: blue;
+  font-family: monospace;
+  font-weight: 600;
+  text-decoration: underline;
+}
