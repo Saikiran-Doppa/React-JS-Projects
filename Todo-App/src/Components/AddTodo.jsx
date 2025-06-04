@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { MdAddToPhotos } from "react-icons/md";
+import { TodoItemsContext } from "../store/todo-items-store";
 
-const AddTodo = ({ onNewItem }) => {
+const AddTodo = () => {
+  const { addNewItem } = useContext(TodoItemsContext);
   const todoNameElement = useRef();
   const todoDateElement = useRef();
 
@@ -11,7 +13,7 @@ const AddTodo = ({ onNewItem }) => {
     const todoDate = todoDateElement.current.value;
     todoNameElement.current.value = "";
     todoDateElement.current.value = "";
-    onNewItem(todoName, todoDate);
+    addNewItem(todoName, todoDate);
   };
 
   return (
