@@ -1,22 +1,17 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { MdAddToPhotos } from "react-icons/md";
 
 const AddTodo = ({ onNewItem }) => {
-  const [todoName, setTodoName] = useState("");
-  const [todoDate, setTodoDate] = useState("");
-
-  const handleNameChange = (event) => {
-    setTodoName(event.target.value);
-  };
-  const handleDateChange = (event) => {
-    setTodoDate(event.target.value);
-  };
+  const todoNameElement = useRef();
+  const todoDateElement = useRef();
 
   const handleAddButtonClicked = (event) => {
     event.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const todoDate = todoDateElement.current.value;
+    todoNameElement.current.value = "";
+    todoDateElement.current.value = "";
     onNewItem(todoName, todoDate);
-    setTodoDate("");
-    setTodoName("");
   };
 
   return (
@@ -26,12 +21,11 @@ const AddTodo = ({ onNewItem }) => {
           <input
             type="text"
             placeholder="Enter Todo here"
-            value={todoName}
-            onChange={handleNameChange}
+            ref={todoNameElement}
           />
         </div>
         <div className="col-4">
-          <input type="date" value={todoDate} onChange={handleDateChange} />
+          <input type="date" ref={todoDateElement} />
         </div>
         <div className="col-2">
           <button type="submit" className="btn btn-success">
