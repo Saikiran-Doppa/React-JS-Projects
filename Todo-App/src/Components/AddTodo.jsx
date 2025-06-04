@@ -12,7 +12,8 @@ const AddTodo = ({ onNewItem }) => {
     setTodoDate(event.target.value);
   };
 
-  const handleAddButtonClicked = () => {
+  const handleAddButtonClicked = (event) => {
+    event.preventDefault();
     onNewItem(todoName, todoDate);
     setTodoDate("");
     setTodoName("");
@@ -20,7 +21,7 @@ const AddTodo = ({ onNewItem }) => {
 
   return (
     <div className="container text-center">
-      <div className="row">
+      <form className="row" onSubmit={handleAddButtonClicked}>
         <div className="col-6">
           <input
             type="text"
@@ -33,15 +34,11 @@ const AddTodo = ({ onNewItem }) => {
           <input type="date" value={todoDate} onChange={handleDateChange} />
         </div>
         <div className="col-2">
-          <button
-            type="button"
-            className="btn btn-success"
-            onClick={handleAddButtonClicked}
-          >
+          <button type="submit" className="btn btn-success">
             <MdAddToPhotos />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
